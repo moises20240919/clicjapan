@@ -118,8 +118,9 @@ nav a {
 
 @keyframes scroll {
   from { transform: translateX(-180px); }
-  to { transform: translateX(calc(-50%-180px)); }
+  to { transform: translateX(calc(-50% - 180px)); } /* CORRIGIDO deve ter espaco entre sinais*/
 }
+
 
 .slider-patrocinador {
   position: relative;
