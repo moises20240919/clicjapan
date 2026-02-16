@@ -270,3 +270,40 @@ nav a {
     text-align: center;
   }
 }
+/* Esconder botão e menu normalmente */
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* No mobile */
+@media screen and (max-width: 768px) {
+  nav.nav-menu {
+    display: none; /* escondido por padrão */
+    width: 100%;
+  }
+
+  nav.nav-menu ul {
+    flex-direction: column;
+    gap: 10px;
+    background: #9aa7b6;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  nav.nav-menu ul li a {
+    display: block;
+    color: #000;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav.nav-menu.active {
+    display: block; /* mostrar quando clicado */
+  }
+}
