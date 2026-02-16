@@ -1,29 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
 
   // mantém o efeito infinito do slider inferior
-  const track = document.getElementById('slider-track');
+  const track = document.querySelector(".slider-track");
   if (track) {
     track.innerHTML += track.innerHTML;
   }
 
-  // novo: alternância das imagens da lateral
+  // alternância das imagens da lateral
   const slides = document.querySelectorAll(".slider-patrocinador img");
-
   if (slides.length > 1) {
     let index = 0;
-
     setInterval(() => {
       slides[index].classList.remove("ativo");
       index = (index + 1) % slides.length;
       slides[index].classList.add("ativo");
     }, 4000);
   }
-  //funcionamento: em mobile o menu vira hamburguer ☰ no desk fica normal
+
+  // funcionamento do menu hamburguer
   const menuToggle = document.querySelector(".menu-toggle");
   const navMenu = document.querySelector(".nav-menu");
 
-  menuToggle.addEventListener("click", function () {
-    navMenu.classList.toggle("active");
-  
-});
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("active");
+    });
+  }
 
+});
