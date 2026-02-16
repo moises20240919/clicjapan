@@ -22,9 +22,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-/* MENU */
 nav ul {
   display: flex;
   gap: 12px;
@@ -42,7 +42,7 @@ nav a {
   color: #000;
 }
 
-/* LAYOUT */
+/* LAYOUT PRINCIPAL */
 .home {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -81,7 +81,7 @@ nav a {
   flex-direction: column;
   gap: 25px;
 }
-/*box dos apoiadores deixeicom mesma cor de fundo da pagina*/
+
 .box {
   background: #aebccc;
   padding: 15px;
@@ -97,7 +97,7 @@ nav a {
   display: block;
 }
 
-/* SLIDE */
+/* SLIDE DE PATROCINADORES */
 .sponsor-slide {
   overflow: hidden;
   width: 100%;
@@ -120,7 +120,6 @@ nav a {
   from { transform: translateX(-180px); }
   to { transform: translateX(calc(-50%-180px)); }
 }
-
 
 .slider-patrocinador {
   position: relative;
@@ -146,7 +145,7 @@ nav a {
   background: #222;
   color: #fff;
   margin-top: 40px;
-  padding: 40px;
+  padding: 40px 20px;
 }
 
 .footer-container {
@@ -179,4 +178,95 @@ nav a {
   margin-top: 20px;
   text-align: center;
   font-size: 14px;
+}
+
+/* ------------------- */
+/* MEDIA QUERIES MOBILE */
+/* ------------------- */
+@media screen and (max-width: 1024px) {
+  .home {
+    grid-template-columns: 1fr;
+    padding: 30px 20px;
+  }
+
+  .titulo-principal {
+    font-size: 36px;
+  }
+
+  .breadcrumb {
+    font-size: 28px;
+  }
+
+  .slogan {
+    font-size: 18px;
+  }
+
+  .descricao {
+    font-size: 16px;
+  }
+
+  .slider-track {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul {
+    justify-content: center;
+    gap: 8px;
+  }
+
+  nav a {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+
+  .slider-track img {
+    height: 50px;
+  }
+
+  .slider-patrocinador {
+    height: 150px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .breadcrumb {
+    font-size: 22px;
+  }
+
+  .titulo-principal {
+    font-size: 28px;
+  }
+
+  .slogan {
+    font-size: 16px;
+  }
+
+  .descricao {
+    font-size: 14px;
+  }
+
+  .slider-track img {
+    height: 40px;
+  }
+
+  .slider-patrocinador {
+    height: 120px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .footer-col {
+    text-align: center;
+  }
 }
