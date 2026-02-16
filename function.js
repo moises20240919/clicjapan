@@ -18,6 +18,12 @@ document.addEventListener("DOMContentLoaded", function () {
       slides[index].classList.add("ativo");
     }, 4000);
   }
+  //funcionamento: em mobile o menu vira hamburguer ☰ no desk fica normal
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector(".nav-menu");
 
+  menuToggle.addEventListener("click", function () {
+    navMenu.classList.toggle("active");
+  
 });
 
