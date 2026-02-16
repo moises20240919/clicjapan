@@ -25,7 +25,7 @@ body {
   flex-wrap: wrap;
 }
 
-nav ul {
+nav.nav-menu ul {
   display: flex;
   gap: 12px;
   list-style: none;
