@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Conheça os projetos desenvolvidos pela CLIC.">
-  <title>Projetos - CliC</title>
+  <meta name="description" content="Descubra os livros publicados pela comunidade CLIC - Ciranda Literária e Cultural.">
+  <title>Livros - CliC</title>
   <link rel="stylesheet" href="style.css">
   <style>
     .page-header {
@@ -34,88 +34,80 @@
       padding: 0 20px;
     }
 
-    .projects-grid {
+    .books-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 30px;
       margin-bottom: 60px;
     }
 
-    .project-card {
-      background: white;
-      border-radius: 12px;
+    .book-card {
+      background: linear-gradient(135deg, #F5F5DC 0%, #D2B48C 100%);
+      border-radius: 8px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       display: flex;
       flex-direction: column;
-      border-left: 5px solid #D2B48C;
+      border: 1px solid #D2B48C;
     }
 
-    .project-card:hover {
+    .book-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
-      border-left-color: #8B4513;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      border-color: #8B4513;
     }
 
-    .project-header {
+    .book-cover {
+      width: 100%;
+      height: 300px;
       background: linear-gradient(135deg, #D2B48C 0%, #F5F5DC 100%);
-      color: #8B4513;
-      padding: 25px;
-      min-height: 120px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      color: #8B4513;
+      font-size: 4rem;
+      font-weight: bold;
+      border-bottom: 1px solid #D2B48C;
     }
 
-    .project-icon {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .project-header h3 {
-      font-size: 1.4rem;
-      margin: 0;
-      font-weight: 600;
-    }
-
-    .project-body {
-      padding: 25px;
+    .book-info {
+      padding: 20px;
       flex: 1;
       display: flex;
       flex-direction: column;
     }
 
-    .project-description {
+    .book-info h3 {
+      font-size: 1.2rem;
+      color: #8B4513;
+      margin-bottom: 8px;
+    }
+
+    .book-author {
+      font-size: 0.9rem;
+      color: #A0522D;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .book-description {
       color: #666;
-      line-height: 1.7;
-      margin-bottom: 15px;
+      font-size: 0.9rem;
+      line-height: 1.6;
       flex: 1;
     }
 
-    .project-status {
+    .book-tag {
       display: inline-block;
-      padding: 6px 12px;
+      background: linear-gradient(135deg, #F5F5DC 0%, #D2B48C 100%);
+      color: #8B4513;
+      padding: 4px 10px;
       border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-top: 15px;
+      font-size: 0.8rem;
+      margin-top: 12px;
       width: fit-content;
-    }
-
-    .status-ativo {
-      background: #d4edda;
-      color: #155724;
-    }
-
-    .status-planejamento {
-      background: #fff3cd;
-      color: #856404;
-    }
-
-    .status-concluido {
-      background: #cfe2ff;
-      color: #084298;
+      border: 1px solid #D2B48C;
     }
 
     @media (max-width: 768px) {
@@ -127,13 +119,14 @@
         font-size: 1.8rem;
       }
 
-      .projects-grid {
-        grid-template-columns: 1fr;
+      .books-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 20px;
       }
 
-      .project-header {
-        min-height: 100px;
+      .book-cover {
+        height: 220px;
+        font-size: 3rem;
       }
     }
   </style>
@@ -144,15 +137,17 @@
 <header class="topo">
   <div class="header-content">
     <a href="index.html"><img src="img/nofundo.png" width="80" alt="Logo CLIC"></a>
+
+    <!-- Botão Hamburger -->
     <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
   </div>
 
   <nav class="nav-menu">
     <ul>
       <li><a href="index.html">Home</a></li>
-      <li><a href="agenda.html">Agenda</a></li>
-      <li><a href="projetos.html">Projetos</a></li>
-      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="agenda.html" target="_blank">Agenda</a></li>
+      <li><a href="projetos.html" target="_blank">Projetos</a></li>
+      <li><a href="noticias.html" target="_blank">Notícias</a></li>
       <li><a href="autores.html">Autores</a></li>
       <li><a href="livros.html">Livros</a></li>
     </ul>
@@ -161,87 +156,69 @@
 
 <!-- HEADER DE PÁGINA -->
 <div class="page-header">
-  <h1>Nossos Projetos</h1>
-  <p>Iniciativas que conectam Brasil e Japão através da cultura</p>
+  <h1>Catálogo de Livros</h1>
+  <p>Explore as obras que celebram a literatura e a diversidade cultural</p>
 </div>
 
 <main class="container">
-  <section class="projects-grid">
-    <article class="project-card">
-      <div class="project-header">
-        <div class="project-icon">📚</div>
-        <h3>Biblioteca Digital</h3>
-      </div>
-      <div class="project-body">
-        <p class="project-description">
-          Acervo online com obras brasileiras e japonesas, facilitando o acesso à literatura para toda a comunidade.
-        </p>
-        <span class="project-status status-ativo">✓ Ativo</span>
+  <section class="books-grid">
+    <article class="book-card">
+      <div class="book-cover">📖</div>
+      <div class="book-info">
+        <h3>Livro 1</h3>
+        <p class="book-author">Autor Brasileiro</p>
+        <p class="book-description">Uma jornada literária que conecta culturas e celebra a riqueza das narrativas.</p>
+        <span class="book-tag">Ficção</span>
       </div>
     </article>
 
-    <article class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🎨</div>
-        <h3>Artes Visuais</h3>
-      </div>
-      <div class="project-body">
-        <p class="project-description">
-          Exposições colaborativas que exploram a intersecção entre arte brasileira e estética japonesa.
-        </p>
-        <span class="project-status status-ativo">✓ Ativo</span>
+    <article class="book-card">
+      <div class="book-cover">📚</div>
+      <div class="book-info">
+        <h3>Livro 2</h3>
+        <p class="book-author">Autor Japonês</p>
+        <p class="book-description">Poesia que atravessa o Pacífico unindo Brasil e Japão em harmonia.</p>
+        <span class="book-tag">Poesia</span>
       </div>
     </article>
 
-    <article class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🎭</div>
-        <h3>Teatro e Performances</h3>
-      </div>
-      <div class="project-body">
-        <p class="project-description">
-          Produções teatrais que adaptam clássicos e criam novas narrativas baseadas em histórias de ambas culturas.
-        </p>
-        <span class="project-status status-planejamento">⏳ Planejamento</span>
+    <article class="book-card">
+      <div class="book-cover">✍️</div>
+      <div class="book-info">
+        <h3>Livro 3</h3>
+        <p class="book-author">Autor Brasileiro</p>
+        <p class="book-description">Ensaios que exploram a interculturalidade e o diálogo entre tradições.</p>
+        <span class="book-tag">Ensaio</span>
       </div>
     </article>
 
-    <article class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🎵</div>
-        <h3>Música e Sonic</h3>
-      </div>
-      <div class="project-body">
-        <p class="project-description">
-          Fusão musical criando composições que combinam ritmos brasileiros com sons tradicionais japoneses.
-        </p>
-        <span class="project-status status-ativo">✓ Ativo</span>
+    <article class="book-card">
+      <div class="book-cover">🎨</div>
+      <div class="book-info">
+        <h3>Livro 4</h3>
+        <p class="book-author">Autor Japonês</p>
+        <p class="book-description">Contos ilustrados que revelam histórias de encontros culturais profundos.</p>
+        <span class="book-tag">Contos</span>
       </div>
     </article>
 
-    <article class="project-card">
-      <div class="project-header">
-        <div class="project-icon">📖</div>
-        <h3>Publicações</h3>
-      </div>
-      <div class="project-body">
-        <p class="project-description">
-          Lançamento de coletâneas, antologias e obras que documentam a produção cultural CLIC.
-        </p>
-        <span class="project-status status-ativo">✓ Ativo</span>
+    <article class="book-card">
+      <div class="book-cover">🌏</div>
+      <div class="book-info">
+        <h3>Livro 5</h3>
+        <p class="book-author">Autor Brasileiro</p>
+        <p class="book-description">Diálogos que exploram temas universais através de perspectivas distintas.</p>
+        <span class="book-tag">Diálogos</span>
       </div>
     </article>
 
-    <article class="project-card">
-      <div class="project-header">
-        <div class="project-icon">🌐</div>
-        <h3>Plataforma Web</h3>
-      </div>
-      <div class="project-body">
-        <p class="project-description">
-          Desenvolvimento deste portal para conectar artistas, leitores e colaboradores de forma integrada.
-        </p>
-        <span class="project-status status-concluido">✓ Concluído</span>
+    <article class="book-card">
+      <div class="book-cover">💫</div>
+      <div class="book-info">
+        <h3>Livro 6</h3>
+        <p class="book-author">Autor Japonês</p>
+        <p class="book-description">Uma coletânea que representa o melhor da criatividade cultural CLIC.</p>
+        <span class="book-tag">Coletânea</span>
       </div>
     </article>
   </section>
@@ -270,8 +247,10 @@
   </div>
 </div>
 
+
 <footer class="footer">
   <div class="footer-container">
+
     <div class="footer-col">
       <h4>Empresa</h4>
       <ul>
@@ -299,17 +278,18 @@
     <div class="footer-col">
       <h4>Siga-nos</h4>
       <div class="social-links">
-        <a href="https://www.facebook.com/people/CliC-Japan/61572995252631/?mibextid=wwXIfr">
+        <a href="https://www.facebook.com/people/CliC-Japan/61572995252631/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
           <img src="img/facebook-icon.png" alt="Facebook">
         </a>
-        <a href="https://www.instagram.com/clic_japan">
+        <a href="https://www.instagram.com/clic_japan" target="_blank" rel="noopener noreferrer">
           <img src="img/instagram.png" alt="Instagram">
         </a>
-        <a href="#">
+        <a href="https://wa.me/818049648994" target="_blank" rel="noopener noreferrer">
           <img src="img/whatsapp-icon.png" alt="WhatsApp">
         </a>
       </div>
     </div>
+
   </div>
 
   <div class="footer-bottom">

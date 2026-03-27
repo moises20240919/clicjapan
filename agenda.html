@@ -1,61 +1,400 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Agenda - CliC Japan</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Confira a agenda de eventos e atividades da CLIC.">
+  <title>Agenda - CliC</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-      background-color: #f4f4f9;
-      color: #333;
-      line-height: 1.6;
+    .page-header {
+      background: linear-gradient(135deg, #D4AF37 0%, #F5F5DC 100%);
+      color: #8B4513;
+      padding: 60px 20px;
+      text-align: center;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #D4AF37;
     }
-    h1 {
-      color: #990000;
-      margin-bottom: 30px;
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      font-weight: normal;
     }
-    .event {
-      margin-bottom: 25px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #ccc;
+
+    .page-header p {
+      font-size: 1.1rem;
+      opacity: 0.95;
     }
-    .event h2 {
-      color: #660000;
-      margin-bottom: 5px;
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    .event time {
-      font-size: 0.9em;
-      color: #777;
+
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 60px;
     }
-    .event p {
-      margin-top: 10px;
+
+    .event-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 30px;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      align-items: start;
+      border-left: 6px solid #D4AF37;
+    }
+
+    .event-item:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      transform: translateX(5px);
+      border-left-color: #8B4513;
+    }
+
+    .event-date-box {
+      background: linear-gradient(135deg, #D4AF37 0%, #F5F5DC 100%);
+      color: #8B4513;
+      padding: 25px;
+      border-radius: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 150px;
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+      border: 2px solid #D4AF37;
+    }
+
+    .event-day {
+      font-size: 2.5rem;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .event-month {
+      font-size: 1.2rem;
+      margin-top: 8px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .event-year {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+
+    .event-details h3 {
+      color: #8B4513;
+      font-size: 1.6rem;
+      margin: 0 0 15px 0;
+      font-weight: 600;
+    }
+
+    .event-meta {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .event-time,
+    .event-location {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1rem;
+      color: #666;
+      font-weight: 500;
+    }
+
+    .event-time::before {
+      content: "🕐";
+      font-size: 1.3rem;
+    }
+
+    .event-location::before {
+      content: "📍";
+      font-size: 1.3rem;
+    }
+
+    .event-description {
+      color: #555;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .event-item {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .event-date-box {
+        grid-row: 1;
+        grid-column: 1;
+      }
+
+      .event-details {
+        grid-row: 2;
+        grid-column: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 40px 20px;
+      }
+
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .event-item {
+        padding: 20px;
+        gap: 15px;
+      }
+
+      .event-date-box {
+        height: 120px;
+        padding: 20px;
+      }
+
+      .event-day {
+        font-size: 2rem;
+      }
+
+      .event-details h3 {
+        font-size: 1.3rem;
+      }
+
+      .event-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Agenda</h1>
 
-  <section class="event">
-    <h2>Sarau Literário</h2>
-    <time datetime="2025-07-10T19:00">10 de julho de 2025, 19:00</time>
-    <p>Encontro mensal para celebração da literatura com poesia, música e bate-papo.</p>
-  </section>
+<header class="topo">
+  <div class="header-content">
+    <a href="index.html"><img src="img/nofundo.png" width="80" alt="Logo CLIC"></a>
+    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+  </div>
 
-  <section class="event">
-    <h2>Oficina de Escrita Criativa</h2>
-    <time datetime="2025-06-20T14:00">20 de junho de 2025, 14:00</time>
-    <p>Oficina para estimular a criatividade e o hábito da escrita, com encontros semanais.</p>
-  </section>
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="autores.html">Autores</a></li>
+      <li><a href="livros.html">Livros</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <section class="event">
-    <h2>Festival Cultural CliC</h2>
-    <time datetime="2025-09-05T10:00">5 de setembro de 2025, 10:00</time>
-    <p>Festival anual com música, dança, literatura e arte para toda a comunidade.</p>
+<!-- HEADER DE PÁGINA -->
+<div class="page-header">
+  <h1>Nossa Agenda</h1>
+  <p>Confira os eventos e atividades da CLIC</p>
+</div>
+
+<main class="container">
+  <section class="events-list">
+    <article class="event-item">
+      <div class="event-date-box">
+        <div class="event-day">20</div>
+        <div class="event-month">Junho</div>
+        <div class="event-year">2025</div>
+      </div>
+      <div class="event-details">
+        <h3>Sarau Literário</h3>
+        <div class="event-meta">
+          <div class="event-time">19:00</div>
+          <div class="event-location">Centro Cultural CLIC</div>
+        </div>
+        <p class="event-description">
+          Encontro mensal para celebração da literatura com poesia, música e bate-papo. Traga seus poemas favoritos e aproveite a noite de integração com a comunidade CLIC!
+        </p>
+      </div>
+    </article>
+
+    <article class="event-item">
+      <div class="event-date-box">
+        <div class="event-day">10</div>
+        <div class="event-month">Julho</div>
+        <div class="event-year">2025</div>
+      </div>
+      <div class="event-details">
+        <h3>Oficina de Escrita Criativa</h3>
+        <div class="event-meta">
+          <div class="event-time">14:00</div>
+          <div class="event-location">Espaço de Criação CLIC</div>
+        </div>
+        <p class="event-description">
+          Workshop interativo onde você aprenderá técnicas avançadas de escrita criativa com autores experientes da comunidade CLIC. Ideal para iniciantes e escritores em desenvolvimento.
+        </p>
+      </div>
+    </article>
+
+    <article class="event-item">
+      <div class="event-date-box">
+        <div class="event-day">15</div>
+        <div class="event-month">Agosto</div>
+        <div class="event-year">2025</div>
+      </div>
+      <div class="event-details">
+        <h3>Mesa Redonda Brasil-Japão</h3>
+        <div class="event-meta">
+          <div class="event-time">16:00</div>
+          <div class="event-location">Auditório CLIC</div>
+        </div>
+        <p class="event-description">
+          Debate com autores brasileiros e japoneses sobre a interculturalidade e o encontro entre tradições literárias. Uma oportunidade para compreender perspectivas únicas.
+        </p>
+      </div>
+    </article>
+
+    <article class="event-item">
+      <div class="event-date-box">
+        <div class="event-day">25</div>
+        <div class="event-month">Setembro</div>
+        <div class="event-year">2025</div>
+      </div>
+      <div class="event-details">
+        <h3>Festival de Literatura CLIC</h3>
+        <div class="event-meta">
+          <div class="event-time">10:00</div>
+          <div class="event-location">Local a ser divulgado</div>
+        </div>
+        <p class="event-description">
+          Grande evento comemorativo com lançamentos de livros, apresentações culturais, música ao vivo, gastronomia e muito mais! O maior encontro da comunidade CLIC no ano.
+        </p>
+      </div>
+    </article>
+
+    <article class="event-item">
+      <div class="event-date-box">
+        <div class="event-day">12</div>
+        <div class="event-month">Outubro</div>
+        <div class="event-year">2025</div>
+      </div>
+      <div class="event-details">
+        <h3>Encontro de Aprendizagem</h3>
+        <div class="event-meta">
+          <div class="event-time">18:00</div>
+          <div class="event-location">Biblioteca CLIC</div>
+        </div>
+        <p class="event-description">
+          Sessão educativa com dicas sobre publicação, divulgação e estratégias para autores independentes. Aprenda com profissionais do mercado editorial.
+        </p>
+      </div>
+    </article>
+
+    <article class="event-item">
+      <div class="event-date-box">
+        <div class="event-day">30</div>
+        <div class="event-month">Novembro</div>
+        <div class="event-year">2025</div>
+      </div>
+      <div class="event-details">
+        <h3>Noite de Autógrafos</h3>
+        <div class="event-meta">
+          <div class="event-time">20:00</div>
+          <div class="event-location">Livraria Parceira CLIC</div>
+        </div>
+        <p class="event-description">
+          Celebração de lançamentos com assinatura de livros, conversas descontraídas e convivência da comunidade literária. Uma noite especial em homenagem aos autores.
+        </p>
+      </div>
+    </article>
   </section>
+</main>
+
+<!-- SLIDE DE PATROCINADORES -->
+<div class="sponsor-slide">
+  <div class="slider-track">
+    <img src="img/bbclong.png" alt="apoiador1">
+    <img src="img/A ultima Maria - Livro.png" alt="apoiador2">
+    <img src="img/kowa.jpg" alt="apoiador3">
+    <img src="img/quasesem.png" alt="apoiador4">
+    <img src="img/combiniya.png" alt="apoiador5">
+    <img src="img/ks.png" alt="apoiador6">
+    <img src="img/lilicofee.jpg" alt="apoiador7">
+    <img src="img/suemi.jpg" alt="apoiador8">
+
+    <img src="img/2024 Nagoya2_branco.png" alt="apoiador9">
+    <img src="img/A ultima Maria - Livro.png" alt="apoiador10">
+    <img src="img/clicicon.png" alt="apoiador11">
+    <img src="img/cct.jpg" alt="apoiador12">
+    <img src="img/cibe.jpg" alt="apoiador13">
+    <img src="img/centroeduca.jpg" alt="apoiador14">
+    <img src="img/JPMaria e as Emoções 20x20.png" alt="apoiador15">
+    <img src="img/suzuki.jpg" alt="apoiador16">
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="sobre.html" target="_blank" rel="noopener noreferrer">Sobre</a></li>
+        <li><a href="aboutus.html" target="_blank" rel="noopener noreferrer">Quem Somos</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Ajuda</h4>
+      <ul>
+        <li><a href="faq.html" target="_blank" rel="noopener noreferrer">FAQ</a></li>
+        <li><a href="suporte.html" target="_blank" rel="noopener noreferrer">Suporte</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="politicasdeprivacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a></li>
+        <li><a href="termosdeuso.html" target="_blank" rel="noopener noreferrer">Termos de Uso</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Siga-nos</h4>
+      <div class="social-links">
+        <a href="https://www.facebook.com/people/CliC-Japan/61572995252631/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+          <img src="img/facebook-icon.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/clic_japan" target="_blank" rel="noopener noreferrer">
+          <img src="img/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://wa.me/818049648994" target="_blank" rel="noopener noreferrer">
+          <img src="img/whatsapp-icon.png" alt="WhatsApp">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 ClicJapan. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="function.js"></script>
 
 </body>
 </html>

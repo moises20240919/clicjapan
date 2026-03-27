@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça os autores associados à CLIC - Ciranda Literária e Cultural.">
+  <title>Autores - CliC</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Cabeçalho visual da página com título e resumo */
+    .page-header {
+      background: linear-gradient(135deg, #D2B48C 0%, #F5F5DC 100%);
+      color: #8B4513;
+      padding: 60px 20px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      font-weight: normal;
+    }
+
+    .page-header p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Grade responsiva para distribuir os cards de autores */
+    .authors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    /* Card individual com destaque visual por autor */
+    .author-card {
+      background: linear-gradient(135deg, #F5F5DC 0%, #D2B48C 100%);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #D2B48C;
+    }
+
+    .author-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);      border-color: #8B4513;    }
+
+    .author-image {
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(135deg, #2b5c8a 0%, #9aa7b6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+    }
+
+    .author-info {
+      padding: 20px;
+    }
+
+    .author-info h3 {
+      font-size: 1.3rem;
+      color: #2b5c8a;
+      margin-bottom: 10px;
+    }
+
+    .author-info p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Ajustes para melhor leitura em telas menores */
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 40px 20px;
+      }
+
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .authors-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- CABEÇALHO: logo, botão mobile e navegação principal -->
+<header class="topo">
+  <div class="header-content">
+    <a href="index.html"><img src="img/nofundo.png" width="80" alt="Logo CLIC"></a>
+
+    <!-- Botão Hamburger -->
+    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+  </div>
+
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="agenda.html" target="_blank">Agenda</a></li>
+      <li><a href="projetos.html" target="_blank">Projetos</a></li>
+      <li><a href="noticias.html" target="_blank">Notícias</a></li>
+      <li><a href="autores.html">Autores</a></li>
+      <li><a href="livros.html">Livros</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HEADER DE PÁGINA -->
+<div class="page-header">
+  <h1>Nossos Autores</h1>
+  <p>Conheça os criadores que integram a comunidade CLIC</p>
+</div>
+
+<!-- CONTEÚDO PRINCIPAL: cards com perfis dos autores -->
+<main class="container">
+  <section class="authors-grid">
+    <article class="author-card">
+      <div class="author-image">📖</div>
+      <div class="author-info">
+        <h3>Autor 1</h3>
+        <p>Explore as obras e contribuições de nossos autores brasileiros e japoneses que celebram a diversidade cultural.</p>
+      </div>
+    </article>
+
+    <article class="author-card">
+      <div class="author-image">✍️</div>
+      <div class="author-info">
+        <h3>Autor 2</h3>
+        <p>Cada escritor traz perspectivas únicas que fortalecem o diálogo e a troca cultural entre os povos.</p>
+      </div>
+    </article>
+
+    <article class="author-card">
+      <div class="author-image">📚</div>
+      <div class="author-info">
+        <h3>Autor 3</h3>
+        <p>Descubra histórias que conectam tradições literárias e enriquecem nossa comunidade cultural.</p>
+      </div>
+    </article>
+
+    <article class="author-card">
+      <div class="author-image">🎨</div>
+      <div class="author-info">
+        <h3>Autor 4</h3>
+        <p>As criações artísticas e literárias que refletem nossa missão de promover a interculturalidade.</p>
+      </div>
+    </article>
+
+    <article class="author-card">
+      <div class="author-image">🌏</div>
+      <div class="author-info">
+        <h3>Autor 5</h3>
+        <p>Vozes que ecoam entre Brasil e Japão, compartilhando vivências e sabedorias.</p>
+      </div>
+    </article>
+
+    <article class="author-card">
+      <div class="author-image">💫</div>
+      <div class="author-info">
+        <h3>Autor 6</h3>
+        <p>Talentos que contribuem para enriquecer o acervo literário e cultural da CLIC.</p>
+      </div>
+    </article>
+  </section>
+</main>
+
+<!-- SLIDE DE PATROCINADORES -->
+<div class="sponsor-slide">
+  <div class="slider-track">
+    <img src="img/bbclong.png" alt="apoiador1">
+    <img src="img/A ultima Maria - Livro.png" alt="apoiador2">
+    <img src="img/kowa.jpg" alt="apoiador3">
+    <img src="img/quasesem.png" alt="apoiador4">
+    <img src="img/combiniya.png" alt="apoiador5">
+    <img src="img/ks.png" alt="apoiador6">
+    <img src="img/lilicofee.jpg" alt="apoiador7">
+    <img src="img/suemi.jpg" alt="apoiador8">
+
+    <img src="img/2024 Nagoya2_branco.png" alt="apoiador9">
+    <img src="img/A ultima Maria - Livro.png" alt="apoiador10">
+    <img src="img/clicicon.png" alt="apoiador11">
+    <img src="img/cct.jpg" alt="apoiador12">
+    <img src="img/cibe.jpg" alt="apoiador13">
+    <img src="img/centroeduca.jpg" alt="apoiador14">
+    <img src="img/JPMaria e as Emoções 20x20.png" alt="apoiador15">
+    <img src="img/suzuki.jpg" alt="apoiador16">
+  </div>
+</div>
+
+
+<!-- RODAPÉ: links institucionais, suporte, legal e redes sociais -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="sobre.html" target="_blank" rel="noopener noreferrer">Sobre</a></li>
+        <li><a href="aboutus.html" target="_blank" rel="noopener noreferrer">Quem Somos</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Ajuda</h4>
+      <ul>
+        <li><a href="faq.html" target="_blank" rel="noopener noreferrer">FAQ</a></li>
+        <li><a href="suporte.html" target="_blank" rel="noopener noreferrer">Suporte</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="politicasdeprivacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a></li>
+        <li><a href="termosdeuso.html" target="_blank" rel="noopener noreferrer">Termos de Uso</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Siga-nos</h4>
+      <div class="social-links">
+        <a href="https://www.facebook.com/people/CliC-Japan/61572995252631/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
+          <img src="img/facebook-icon.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/clic_japan" target="_blank" rel="noopener noreferrer">
+          <img src="img/instagram.png" alt="Instagram">
+        </a>
+        <a href="https://wa.me/818049648994" target="_blank" rel="noopener noreferrer">
+          <img src="img/whatsapp-icon.png" alt="WhatsApp">
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 ClicJapan. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- Scripts globais: menu mobile, slider e tema light/dark -->
+<script src="function.js"></script>
+
+</body>
+</html>

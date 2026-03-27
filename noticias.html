@@ -1,62 +1,399 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Notícias - CliC Japan</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acompanhe as notícias e novidades da CLIC.">
+  <title>Notícias - CliC</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-      background-color: #f4f4f9;
-      color: #333;
-      line-height: 1.6;
+    .page-header {
+      background: linear-gradient(135deg, #D2B48C 0%, #F5F5DC 100%);
+      color: #8B4513;
+      padding: 60px 20px;
+      text-align: center;
+      margin-bottom: 40px;
     }
-    h1 {
-      color: #990000;
-      margin-bottom: 30px;
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      font-weight: normal;
     }
-    .news-item {
-      margin-bottom: 30px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #ccc;
+
+    .page-header p {
+      font-size: 1.1rem;
+      opacity: 0.95;
     }
-    .news-item h2 {
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .news-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    }
+
+    .news-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, #aebccc 0%, #9aa7b6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3.5rem;
+    }
+
+    .news-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #2b5c8a;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .news-content {
+      padding: 25px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .news-date {
+      font-size: 0.85rem;
+      color: #9aa7b6;
       margin-bottom: 8px;
-      color: #660000;
+      font-weight: 600;
     }
-    .news-item time {
-      font-size: 0.9em;
-      color: #777;
+
+    .news-content h3 {
+      color: #8B4513;
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      line-height: 1.4;
     }
-    .news-item p {
-      margin-top: 10px;
+
+    .news-excerpt {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 15px;
+    }
+
+    .news-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+
+    .news-category {
+      display: inline-block;
+      background: linear-gradient(135deg, #F5F5DC 0%, #D2B48C 100%);
+      color: #8B4513;
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid #D2B48C;
+    }
+
+    .news-link {
+      color: #8B4513;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.3s ease;
+    }
+
+    .news-link:hover {
+      color: #A0522D;
+    }
+
+    .featured-news {
+      background: linear-gradient(135deg, #D2B48C 0%, #F5F5DC 100%);
+      color: #8B4513;
+      padding: 40px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border: 1px solid #D2B48C;
+    }
+
+    .featured-news h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      font-weight: normal;
+    }
+
+    .featured-news p {
+      font-size: 1.05rem;
+      margin-bottom: 15px;
+      opacity: 0.95;
+    }
+
+    .featured-date {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 40px 20px;
+      }
+
+      .page-header h1 {
+        font-size: 1.8rem;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .featured-news {
+        padding: 30px 20px;
+      }
+
+      .featured-news h2 {
+        font-size: 1.6rem;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Notícias</h1>
 
-  <article class="news-item">
-    <h2>Lançamento da CliC</h2>
-    <time datetime="2025-07-10">10 de julho de 2025</time>
-    <p>O evento, realizado no Consulado-Geral de Hamamatsu, contou com a participação de nove autores e palestrantes significativos, como Embaixador Aldemo Garcia, Ângelo Ishi, Daisuke Kondo, Adriana Suguino, entre outros.
-O evento recebeu mais de 100 pessoas e teve uma resposta extremamente positiva, sendo reconhecido pelo publico como inovador e diferenciado. </p>
-  <img src="img/" width="200" alt="foto do dia"></article>
+<header class="topo">
+  <div class="header-content">
+    <a href="index.html"><img src="img/nofundo.png" width="80" alt="Logo CLIC"></a>
+    <button class="menu-toggle" aria-label="Abrir menu">&#9776;</button>
+  </div>
 
-  <article class="news-item">
-    <h2>Clic 2 edição</h2>
-    <time datetime="2025-06-20">20 de junho de 2025</time>
-    <p>Consulado de Nagoya, em junho, elevou a proposta e foi sucesso,  com ainda mais interação entre os participantes e o público, criando um ambiente mais dinâmico e envolvente. </p>
-  <img src="img/" width="200" alt="foto do dia"></article>
+  <nav class="nav-menu">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="agenda.html">Agenda</a></li>
+      <li><a href="projetos.html">Projetos</a></li>
+      <li><a href="noticias.html">Notícias</a></li>
+      <li><a href="autores.html">Autores</a></li>
+      <li><a href="livros.html">Livros</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <article class="news-item">
-    <h2>Clic 3 edição</h2>
-    <time datetime="2025-09-05">5 de setembro de 2025</time>
-    <p>Embaixada do Brasil em Tokyo, o evento se consolidado com um diferencial que aproxima as culturas como ponte entres as pessoas.  sem perder sua autenticidade e leveza o evento, contou com apresentações de brasileiros e japoneses.</p>
-  <img src="img/" width="200" alt="foto do dia"></article>
+<!-- HEADER DE PÁGINA -->
+<div class="page-header">
+  <h1>Notícias CLIC</h1>
+  <p>Acompanhe as últimas novidades e atualizações</p>
+</div>
+
+<main class="container">
+  <!-- DESTAQUE PRINCIPAL -->
+  <article class="featured-news">
+    <h2>🎉 Grande Festival de Literatura CLIC Confirmado!</h2>
+    <p>
+      Preparamos um grande festival literário para celebrar a conexão entre Brasil e Japão, 
+      reunindo autores, artistas e amigos da CLIC para um evento inesquecível em setembro de 2025.
+    </p>
+    <p class="featured-date">📅 25 de março de 2026</p>
+  </article>
+
+  <!-- NOTÍCIAS -->
+  <section class="news-grid">
+    <article class="news-card">
+      <div class="news-image">📚</div>
+      <div class="news-content">
+        <span class="news-date">20 de março de 2026</span>
+        <h3>Lançamento de Nova Coletânea Literária</h3>
+        <span class="news-badge">DESTAQUE</span>
+        <p class="news-excerpt">
+          A CLIC apresenta a coletânea "Pontes de Tinta", reunindo 25 autores em histórias que conectam Brasil e Japão.
+        </p>
+        <div class="news-footer">
+          <span class="news-category">Publicações</span>
+          <a href="#" class="news-link">Leia mais →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image">🎨</div>
+      <div class="news-content">
+        <span class="news-date">18 de março de 2026</span>
+        <h3>Exposição de Artes Visuais Inaugura</h3>
+        <p class="news-excerpt">
+          Confira a nova exposição que mescla técnicas tradicionais japonesas com expressão artística brasileira contemporânea.
+        </p>
+        <div class="news-footer">
+          <span class="news-category">Eventos</span>
+          <a href="#" class="news-link">Saiba mais →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image">🎭</div>
+      <div class="news-content">
+        <span class="news-date">15 de março de 2026</span>
+        <h3>Peça Teatral Histórica em Preparação</h3>
+        <p class="news-excerpt">
+          Novo projeto teatral adaptará clássicos literários em uma produção que promete envolver toda a comunidade CLIC.
+        </p>
+        <div class="news-footer">
+          <span class="news-category">Teatro</span>
+          <a href="#" class="news-link">Saiba mais →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image">🎵</div>
+      <div class="news-content">
+        <span class="news-date">12 de março de 2026</span>
+        <h3>Projeto Sonoro Brasil-Japão Premiado</h3>
+        <p class="news-excerpt">
+          Trabalho colaborativo de músicos brasileiros e japoneses recebe reconhecimento em festival internacional de artes.
+        </p>
+        <div class="news-footer">
+          <span class="news-category">Música</span>
+          <a href="#" class="news-link">Confira →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image">🌐</div>
+      <div class="news-content">
+        <span class="news-date">10 de março de 2026</span>
+        <h3>Portal CLIC Vai ao Ar com Novas Seções</h3>
+        <p class="news-excerpt">
+          Nosso website ganhou novas páginas dedicadas a Autores, Livros e Projetos com uma experiência completamente renovada.
+        </p>
+        <div class="news-footer">
+          <span class="news-category">Tecnologia</span>
+          <a href="#" class="news-link">Explore →</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="news-card">
+      <div class="news-image">📖</div>
+      <div class="news-content">
+        <span class="news-date">8 de março de 2026</span>
+        <h3>Autora Brasileira Integra Comunidade CLIC</h3>
+        <p class="news-excerpt">
+          Escritora premiada se junta à rede de autores CLIC, ampliando nosso portfólio literário com novas perspectivas.
+        </p>
+        <div class="news-footer">
+          <span class="news-category">Comunidade</span>
+          <a href="#" class="news-link">Leia mais →</a>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<!-- SLIDE DE PATROCINADORES -->
+<div class="sponsor-slide">
+  <div class="slider-track">
+    <img src="img/bbclong.png" alt="apoiador1">
+    <img src="img/A ultima Maria - Livro.png" alt="apoiador2">
+    <img src="img/kowa.jpg" alt="apoiador3">
+    <img src="img/quasesem.png" alt="apoiador4">
+    <img src="img/combiniya.png" alt="apoiador5">
+    <img src="img/ks.png" alt="apoiador6">
+    <img src="img/lilicofee.jpg" alt="apoiador7">
+    <img src="img/suemi.jpg" alt="apoiador8">
+
+    <img src="img/2024 Nagoya2_branco.png" alt="apoiador9">
+    <img src="img/A ultima Maria - Livro.png" alt="apoiador10">
+    <img src="img/clicicon.png" alt="apoiador11">
+    <img src="img/cct.jpg" alt="apoiador12">
+    <img src="img/cibe.jpg" alt="apoiador13">
+    <img src="img/centroeduca.jpg" alt="apoiador14">
+    <img src="img/JPMaria e as Emoções 20x20.png" alt="apoiador15">
+    <img src="img/suzuki.jpg" alt="apoiador16">
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="sobre.html" target="_blank" rel="noopener noreferrer">Sobre</a></li>
+        <li><a href="aboutus.html" target="_blank" rel="noopener noreferrer">Quem Somos</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Ajuda</h4>
+      <ul>
+        <li><a href="faq.html" target="_blank" rel="noopener noreferrer">FAQ</a></li>
+        <li><a href="suporte.html" target="_blank" rel="noopener noreferrer">Suporte</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="politicasdeprivacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a></li>
+        <li><a href="termosdeuso.html" target="_blank" rel="noopener noreferrer">Termos de Uso</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Siga-nos</h4>
+      <div class="social-links">
+        <a href="https://www.facebook.com/people/CliC-Japan/61572995252631/?mibextid=wwXIfr">
+          <img src="img/facebook-icon.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/clic_japan">
+          <img src="img/instagram.png" alt="Instagram">
+        </a>
+        <a href="#">
+          <img src="img/whatsapp-icon.png" alt="WhatsApp">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2026 ClicJapan. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script src="function.js"></script>
 
 </body>
 </html>
